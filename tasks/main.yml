@@ -1,2 +1,21 @@
 ---
+- name: "Include OS-specific variables"
+  include_vars: "{{ ansible_os_family }}.yml"
+  tags:
+    - zabbix-agent
 
+- name: "Install the correct repository"
+  include: "RedHat.yml"
+  when:
+    - ansible_os_family == "RedHat"
+  tags:
+    - zabbix-agent
+    - packages
+
+- name: "Install the correct repository"
+  include: "Debian.yml"
+  when:
+    - ansible_os_family == "Debian"
+  tags:
+    - zabbix-agent
+    - packages

@@ -1,1 +1,6 @@
 ---
+zabbix_version: 3.4
+zabbix_agent_packages:
+  - zabbix-agent
+  - zabbix-sender
+  - zabbix-get
