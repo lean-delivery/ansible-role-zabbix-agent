@@ -41,6 +41,6 @@ verifier:
   name: testinfra
   options:
     verbose: true
-  directory: ../resources/tests/
+  directory: ../resources/tests
   lint:
     name: flake8

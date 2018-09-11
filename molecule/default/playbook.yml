@@ -2,4 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: zabbix-agent
+    - role: ansible-role-zabbix-agent
