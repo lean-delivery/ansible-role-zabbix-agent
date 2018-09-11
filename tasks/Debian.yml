@@ -1,9 +1,8 @@
 ---
 - name: "Debian | Installing repository for Ubuntu"
   apt:
-    deb: >
-      "https://repo.zabbix.com/zabbix/{{ zabbix_version }}
-      /ubuntu/pool/main/z/zabbix-release
+    deb: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}\
+      /ubuntu/pool/main/z/zabbix-release\
       /zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
     state: present
   when: ansible_distribution == "Ubuntu"
@@ -14,9 +13,8 @@
 
 - name: "Debian | Installing repository for Debian"
   apt:
-    deb: >
-      "https://repo.zabbix.com/zabbix/{{ zabbix_version }}
-      /debian/pool/main/z/zabbix-release
+    deb: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}\
+      /debian/pool/main/z/zabbix-release\
       /zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
     state: present
   when: ansible_distribution == "Debian"
