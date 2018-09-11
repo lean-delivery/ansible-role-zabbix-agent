@@ -1,20 +1,26 @@
 ---
 - name: "Debian | Installing repository for Ubuntu"
   apt:
-    deb: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
+    deb: >
+      "https://repo.zabbix.com/zabbix/{{ zabbix_version }}
+      /ubuntu/pool/main/z/zabbix-release
+      /zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
     state: present
   when: ansible_distribution == "Ubuntu"
-  become: yes
+  become: True
   tags:
     - zabbix-agent
     - packages
 
 - name: "Debian | Installing repository for Debian"
   apt:
-    deb: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/debian/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
+    deb: >
+      "https://repo.zabbix.com/zabbix/{{ zabbix_version }}
+      /debian/pool/main/z/zabbix-release
+      /zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
     state: present
   when: ansible_distribution == "Debian"
-  become: yes
+  become: True
   tags:
     - zabbix-agent
     - packages
@@ -23,10 +29,10 @@
   apt:
     pkg: "{{ zabbix_agent_packages }}"
     state: present
-    update_cache: yes
+    update_cache: True
     #  cache_valid_time: 0
-  become: yes
-  check_mode: no
+  become: True
+  check_mode: False
   tags:
     - zabbix-agent
     - packages
@@ -35,9 +41,9 @@
   apt:
     pkg: policycoreutils-python-utils
     state: present
-    update_cache: yes
+    update_cache: True
     cache_valid_time: 0
-  become: yes
+  become: True
   tags:
     - zabbix-agent
     - packages

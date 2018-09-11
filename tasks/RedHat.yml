@@ -1,9 +1,11 @@
 ---
 - name: "RedHat | Install basic repo file"
   yum:
-    name: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/7/x86_64/zabbix-release-{{ zabbix_version }}-2.el7.noarch.rpm"
+    name: >
+      "https://repo.zabbix.com/zabbix/{{ zabbix_version }}
+      /rhel/7/x86_64/zabbix-release-{{ zabbix_version }}-2.el7.noarch.rpm"
     state: present
-  become: yes
+  become: True
   when: ansible_distribution_major_version == '7'
   tags:
     - zabbix-agent
@@ -11,9 +13,11 @@
 
 - name: "RedHat | Install basic repo file"
   yum:
-    name: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/6/x86_64/zabbix-release-{{ zabbix_version }}-1.el6.noarch.rpm"
+    name: >
+      "https://repo.zabbix.com/zabbix/{{ zabbix_version }}
+      /rhel/6/x86_64/zabbix-release-{{ zabbix_version }}-1.el6.noarch.rpm"
     state: present
-  become: yes
+  become: True
   when: ansible_distribution_major_version == '6'
   tags:
     - zabbix-agent
@@ -21,9 +25,11 @@
 
 - name: "RedHat | Install basic repo file"
   yum:
-    name: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/5/x86_64/zabbix-release-{{ zabbix_version }}-1.noarch.rpm"
+    name: >
+      "https://repo.zabbix.com/zabbix/{{ zabbix_version }}
+      /rhel/5/x86_64/zabbix-release-{{ zabbix_version }}-1.noarch.rpm"
     state: present
-  become: yes
+  become: True
   when: ansible_distribution_major_version == '5'
   tags:
     - zabbix-agent
@@ -33,7 +39,7 @@
   package:
     pkg: "{{ item }}"
     state: present
-  become: yes
+  become: True
   with_items: "{{ zabbix_agent_packages }}"
   tags:
     - zabbix-agent
@@ -43,7 +49,7 @@
   package:
     name: policycoreutils-python
     state: present
-  become: yes
+  become: True
   tags:
     - zabbix-agent
     - zabbix-agent-selinux
