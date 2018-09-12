@@ -1,16 +1,10 @@
 ---
-- name: "Install the correct repository"
-  include: "RedHat.yml"
-  when:
-    - ansible_os_family == "RedHat"
-  tags:
-    - zabbix-agent
-    - packages
-
-- name: "Install the correct repository"
-  include: "Debian.yml"
-  when:
-    - ansible_os_family == "Debian"
+- name: "include platform-specific tasks"
+  include_tasks: "{{ platform }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yml"
+  loop_control:
+    loop_var: platform
   tags:
     - zabbix-agent
     - packages
