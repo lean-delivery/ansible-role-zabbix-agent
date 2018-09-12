@@ -3,6 +3,7 @@
   hosts: all
   roles:
     - role: ansible-role-zabbix-agent
-      zabbix_agent_server: "test.zabbix.com"
-      zabbix_agent_serveractive: "test.zabbix.com"
-      zabbix_agent_hostmetadata: "test metadata"
+      vars:
+        zabbix_agent_server: "test.zabbix.com"
+        zabbix_agent_serveractive: "test.zabbix.com"
+        zabbix_agent_hostmetadata: "test metadata"
