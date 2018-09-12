@@ -31,14 +31,15 @@
   command: getenforce
   register: sestatus
   when: 'getenforce_bin.stat.exists'
-  changed_when: false
+  changed_when: False
   become: True
   check_mode: False
 
 - name: "Set zabbix_selinux to true if getenforce returns Enforcing or Permissive"
   set_fact:
     zabbix_selinux: "{{ true }}"
-  when: 'getenforce_bin.stat.exists and ("Enforcing" in sestatus.stdout or "Permissive" in sestatus.stdout)'
+  when: getenforce_bin.stat.exists and
+        ("Enforcing" in sestatus.stdout or "Permissive" in sestatus.stdout)
 
 - name: "Allow zabbix_agent to start (SELinux)"
   selinux_permissive:
