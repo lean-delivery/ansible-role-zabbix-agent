@@ -1,0 +1,18 @@
+---
+- name: "SELinux | Install policycoreutils-python"
+  package:
+    name: policycoreutils-python
+    state: present
+  become: True
+  tags:
+    - zabbix-agent
+    - zabbix-agent-selinux
+
+- name: "SELinux | Allow zabbix_agent to start"
+  selinux_permissive:
+    name: zabbix_agent_t
+    permissive: True
+  become: True
+  tags:
+    - zabbix-agent
+    - zabbix-agent-selinux

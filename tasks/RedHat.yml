@@ -42,11 +42,6 @@
     - zabbix-agent
     - packages
 
-- name: "Install policycoreutils-python"
-  package:
-    name: policycoreutils-python
-    state: present
-  become: True
-  tags:
-    - zabbix-agent
-    - zabbix-agent-selinux
+- name: "RedHat | Add selinux support"
+  include_tasks: selinux-support.yml
+  when: zabbix_agent_selinux
