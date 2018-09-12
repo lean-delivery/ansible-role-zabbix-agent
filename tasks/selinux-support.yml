@@ -1,12 +1,12 @@
 ---
 - name: install ansible selinux support library
-  become: true
+  become: True
   package:
     name: libselinux-python
     state: present
 
 - name: install ansible selinux configure libraries
-  become: true
+  become: True
   package:
     name: "{{ selibs_item }}"
     state: present
