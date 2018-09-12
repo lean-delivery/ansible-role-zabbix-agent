@@ -22,11 +22,10 @@
     - packages
 
 - name: "RedHat | Install zabbix-agent"
-  package:
-    pkg: "{{ item }}"
+  yum:
+    pkg: "{{ zabbix_agent_packages }}"
     state: present
   become: True
-  with_items: "{{ zabbix_agent_packages }}"
   tags:
     - zabbix-agent
     - packages
