@@ -29,7 +29,7 @@ Docker zabbix-agent:
   tags:
     - docker
 
-.AWS zabbix-agent:
+AWS zabbix-agent:
   variables:
     EPC_REGION: AWS-EUCENTRAL
   stage: deployment test
