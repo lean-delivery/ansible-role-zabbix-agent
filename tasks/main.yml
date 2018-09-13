@@ -9,7 +9,7 @@
 - name: include platform-specific tasks
   include_tasks: "{{ platform }}"
   with_first_found:
-    - "{{ ansible_os_family }}.yml"
+    - "system/{{ ansible_os_family }}.yml"
   loop_control:
     loop_var: platform
   tags:
