@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: zabbix-agent
+  role_name: zabbix_agent
   author: Lean Delivery Team <team@lean-delivery.com>
   description: Ansible role for installing and configuring Zabbix Agent
   company: EPAM Systems
@@ -25,5 +25,10 @@ galaxy_info:
         - squeeze
         - wheezy
         - stretch
-  galaxy_tags: [zabbix, system, monitoring, alerting]
+  galaxy_tags:
+    - zabbix
+    - system
+    - monitoring
+    - alerting
+
 dependencies: []

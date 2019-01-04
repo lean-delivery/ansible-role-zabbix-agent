@@ -4,17 +4,23 @@
   package:
     name: libselinux-python
     state: present
+  register: status
+  retries: 10
+  delay: 2
+  until: status is success
 
 - name: install ansible selinux configure libraries
   become: True
   package:
-    name: "{{ selibs_item }}"
+    name: "{{ item }}"
     state: present
-  with_items:
+  register: status
+  retries: 10
+  delay: 2
+  until: status is success
+  loop:
     - policycoreutils-python
     - libsemanage-python
-  loop_control:
-    loop_var: selibs_item
   when: ansible_selinux.status == "enabled"
 
 - name: "SELinux | Allow zabbix_agent to start"
