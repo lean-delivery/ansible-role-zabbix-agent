@@ -4,6 +4,8 @@ stages:
   - lint
   - deployment test
 
+image: vutkin/gitlab-runner-docker-executor:latest
+
 before_script:
   - ansible --version
   - molecule --version
@@ -28,9 +30,18 @@ Docker zabbix-agent:
   script:
     - molecule test -s default
   tags:
-    - docker
+    - aws
 
 AWS zabbix-agent:
+  variables:
+    AWS_REGION: us-east-1
+  stage: deployment test
+  script:
+    - molecule test -s cloud-aws-direct
+  tags:
+    - aws
+
+.AWS zabbix-agent:
   variables:
     EPC_REGION: AWS-EUCENTRAL
   stage: deployment test
