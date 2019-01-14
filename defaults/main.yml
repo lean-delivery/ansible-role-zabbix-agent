@@ -36,3 +36,11 @@ zabbix_agent_unsafeuserparameters: 0
 zabbix_agent_custom_scripts: False
 zabbix_agent_loadmodulepath: ${libdir}/modules
 zabbix_agent_loadmodule:
+
+zabbix_repository_url_deb: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}\
+  /{{ ansible_distribution|lower }}/pool/main/z/zabbix-release\
+  /zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
+zabbix_repository_url_rhel: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}\
+  /rhel/{{ ansible_distribution_major_version }}/x86_64/zabbix-release-\
+  {{ zabbix_version }}-\
+  {{ {'7': '2.el7.noarch.rpm', '6': '1.el6.noarch.rpm'}[ansible_distribution_major_version] }}"

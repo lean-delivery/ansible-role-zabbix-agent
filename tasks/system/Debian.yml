@@ -1,10 +1,12 @@
 ---
 - name: "Installing repository for {{ ansible_distribution }}"
   apt:
-    deb: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}\
-      /{{ ansible_distribution|lower }}/pool/main/z/zabbix-release\
-      /zabbix-release_{{ zabbix_version }}-1+{{ ansible_distribution_release }}_all.deb"
+    deb: "{{ zabbix_repository_url_deb }}"
     state: present
+  register: status
+  retries: 10
+  delay: 2
+  until: status is success
   when: ansible_distribution == "Ubuntu"
   become: True
 
@@ -13,4 +15,8 @@
     pkg: "{{ zabbix_agent_packages }}"
     state: present
     update_cache: True
+  register: status
+  retries: 10
+  delay: 2
+  until: status is success
   become: True
