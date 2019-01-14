@@ -8,15 +8,9 @@
     state: present
   become: True
   when: ansible_distribution_major_version in ['7','6']
-  tags:
-    - zabbix-agent
-    - packages
 
 - name: "RedHat | Install zabbix-agent"
   yum:
     pkg: "{{ zabbix_agent_packages }}"
     state: present
   become: True
-  tags:
-    - zabbix-agent
-    - packages

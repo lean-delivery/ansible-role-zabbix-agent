@@ -7,9 +7,6 @@
     state: present
   when: ansible_distribution == "Ubuntu"
   become: True
-  tags:
-    - zabbix-agent
-    - packages
 
 - name: "Instal zabbix-agent"
   apt:
@@ -17,6 +14,3 @@
     state: present
     update_cache: True
   become: True
-  tags:
-    - zabbix-agent
-    - packages
