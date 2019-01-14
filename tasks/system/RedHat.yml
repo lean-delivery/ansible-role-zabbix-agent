@@ -1,4 +1,7 @@
 ---
+- name: "Adding selinux support"
+  include_tasks: selinux-support.yml
+
 - name: "Install basic repo file"
   yum:
     name: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}\
