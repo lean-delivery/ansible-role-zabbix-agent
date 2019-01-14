@@ -1,5 +1,11 @@
 zabbix-agent role
 =========
+[![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-zabbix-agent/master/LICENSE)
+[![Build Status](https://travis-ci.org/lean-delivery/ansible-role-zabbix-agent.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-zabbix-agent)
+[![Build Status](https://gitlab.com/lean-delivery/ansible-role-zabbix-agent/badges/master/build.svg)](https://gitlab.com/lean-delivery/ansible-role-zabbix-agent)
+[![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.zabbix__agent-blue.svg)](https://galaxy.ansible.com/lean_delivery/ansible-role-zabbix-agent)
+![Ansible](https://img.shields.io/ansible/role/d/29478.svg)
+![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F29478%2F&query=$.min_ansible_version)
 
 A brief description of the role goes here.
 
@@ -32,9 +38,16 @@ Example Playbook
 Including an example of how to use your role (for instance, with variables
 passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: zabbix-agent, x: 42 }
+```yml
+- name: "Install zabbix agent"
+  hosts: all
+
+  roles:
+    - role: lean_delivery.zabbix_agent
+      zabbix_agent_server: "test.zabbix.com"
+      zabbix_agent_serveractive: "test.zabbix.com"
+      zabbix_agent_hostmetadata: "test metadata"
+```
 
 License
 -------
